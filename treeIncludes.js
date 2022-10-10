@@ -26,6 +26,23 @@ const treeIncludes = (root, target) => {
     return false;
 }
 
+// Charlie's breadth-first iterative
+
+const treeIncludesBreadth = (root, target) => {
+    if (root === null) return false;
+
+    const queue = [ root ];
+
+    while (queue.length > 0) {
+        const current = queue.shift();
+
+        if (current.val === target) return true;
+        if (current.right) queue.push(current.right);
+        if (current.left) queue.push(current.left);
+    }
+
+    return false;
+}
 
 
 const a = new Node("a");
@@ -47,4 +64,4 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-console.log(treeIncludes(a, "e")) // -> true
+console.log(treeIncludesBreadth(a, "e")) // -> true
