@@ -43,6 +43,28 @@ const treeMinValueRecursive = (root) => {
 }
 
 
+// Structy Iterative
+
+const treeMinValueStructy = (root) => {
+    const stack = [ root ];
+    let smallest = Infinity;
+
+    while (stack.length > 0) {
+        const current = stack.pop();
+        if (current.val < smallest) smallest = current.val;
+
+        if (current.left !== null) stack.push(current.left);
+        if (current.right !== null) stack.push(current.right);
+    }
+
+    return smallest;
+}
+
+// Structy Recursive
+
+
+
+
 const a = new Node(3);
 const b = new Node(11);
 const c = new Node(4);
