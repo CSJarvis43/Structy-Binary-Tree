@@ -14,6 +14,7 @@ class Node {
 }
 
 const depthFirstValues = (root) => {
+    if (root === null) return [];
 
     let result = [];
     const stack = [ root ];
