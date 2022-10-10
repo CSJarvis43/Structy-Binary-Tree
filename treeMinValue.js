@@ -62,6 +62,14 @@ const treeMinValueStructy = (root) => {
 
 // Structy Recursive
 
+const treeMinValueStructyRecursive = (root) => {
+    if (root === null) return Infinity;
+
+    const leftMin = treeMinValueStructyRecursive(root.left);
+    const rightMin = treeMinValueStructyRecursive(root.right);
+
+    return Math.min(root.val, leftMin, rightMin);
+}
 
 
 
