@@ -45,6 +45,16 @@ const treeIncludesBreadth = (root, target) => {
 }
 
 
+// Charlie's Recursive
+
+const treeIncludesRecursive = (root, target) => {
+    if (root === null) return false;
+    if (root.val === target) return true;
+
+    return treeIncludesRecursive(root.left, target) || treeIncludesRecursive(root.right, target);
+}
+
+
 const a = new Node("a");
 const b = new Node("b");
 const c = new Node("c");
@@ -64,4 +74,5 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-console.log(treeIncludesBreadth(a, "e")) // -> true
+// console.log(treeIncludesBreadth(a, "e")) // -> true
+console.log(treeIncludesRecursive(a, "e"))
