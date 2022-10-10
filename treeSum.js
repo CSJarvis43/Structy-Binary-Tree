@@ -10,10 +10,25 @@ class Node {
   }
 }
 
-// Charlie's Iterative
+// Charlie's Depth Iterative
 
 
+const treeSum = (root) => {
+    if (root === null) return 0;
 
+    const stack = [ root ];
+    let result = 0;
+
+    while (stack.length > 0) {
+        const current = stack.pop();
+        result += current.val;
+
+        if (current.right) stack.push(current.right);
+        if (current.left) stack.push(current.left);
+    }
+
+    return result;
+}
 
 
 const a = new Node(3);
