@@ -49,7 +49,16 @@ const treeSumBreadth = (root) => {
 }
 
 
+// Charlie's Recursive Solution
 
+const treeSumRecursive = (root) => {
+    if (root === null) return 0;
+
+    const leftValues = treeSumRecursive(root.left);
+    const rightValues = treeSumRecursive(root.right);
+
+    return root.val + leftValues + rightValues;
+}
 
 
 const a = new Node(3);
@@ -72,4 +81,5 @@ c.right = f;
 // 4   -2     1
 
 // console.log(treeSum(a)) // -> 21
-console.log(treeSumBreadth(a))
+// console.log(treeSumBreadth(a))
+console.log(treeSumRecursive(a))
