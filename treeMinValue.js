@@ -31,6 +31,17 @@ const treeMinValue = (root) => {
 }
 
 
+// Charlie's Recursive
+
+const treeMinValueRecursive = (root) => {
+    if (root === null) return Infinity;
+    
+    const smallestLeft = treeMinValueRecursive(root.left);
+    const smallestRight = treeMinValueRecursive(root.right);
+
+    return Math.min(root.val, smallestLeft, smallestRight);
+}
+
 
 const a = new Node(3);
 const b = new Node(11);
@@ -52,3 +63,4 @@ c.right = f;
 // 4   -2     1
 
 console.log(treeMinValue(a)) // -> -2
+console.log(treeMinValueRecursive(a))
