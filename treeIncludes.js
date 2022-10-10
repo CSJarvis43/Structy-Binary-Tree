@@ -12,8 +12,18 @@ class Node {
 // Charlie's depth-first iterative
 
 const treeIncludes = (root, target) => {
+    if (root === null) return false;
 
+    const stack = [ root ];
+    
+    while (stack.length > 0) {
+        const current = stack.pop();
 
+        if (current.val === target) return true;
+        if (current.right) stack.push(current.right);
+        if (current.left) stack.push(current.left);
+    }
+    return false;
 }
 
 
