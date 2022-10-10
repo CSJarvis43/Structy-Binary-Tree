@@ -61,6 +61,16 @@ const treeSumRecursive = (root) => {
 }
 
 
+// Structy Recursive
+
+const treeSumStructyRecursive = (root) => {
+
+    if (root === null) return 0;
+
+    return root.val + treeSumStructy(root.left) + treeSumStructy(root.right);
+}
+
+
 const a = new Node(3);
 const b = new Node(11);
 const c = new Node(4);
