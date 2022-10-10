@@ -11,8 +11,24 @@ class Node {
   }
 }
 
+// Charlie's Breadth Iterative
 
 
+const treeMinValue = (root) => {
+    //if (root === null) return null; <- not needed because we assume the input tree is non empty
+
+    const queue = [ root ];
+    let min = Infinity;
+
+    while (queue.length > 0) {
+        const current = queue.shift();
+        if (current.val < min) min = current.val;
+
+        if (current.left) queue.push(current.left);
+        if (current.right) queue.push(current.right);
+    }
+    return min;
+}
 
 
 
