@@ -30,6 +30,17 @@ const depthFirstValues = (root) => {
 }
 
 
+// Recursive
+
+const depthFirstValuesRecursive = (root) => {
+
+    if (root === null) return [];
+    const leftValues = depthFirstValuesRecursive(root.left); //b, d, e
+    const rightValues = depthFirstValuesRecursive(root.right); //c, f
+    return [root.val, ...leftValues, ...rightValues] // a, b, d, e, c, f
+}
+
+
 
 
 
@@ -52,5 +63,5 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-console.log(depthFirstValues(a))
+console.log(depthFirstValuesRecursive(a))
 //    -> ['a', 'b', 'd', 'e', 'c', 'f']
