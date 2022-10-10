@@ -30,6 +30,27 @@ const treeSum = (root) => {
     return result;
 }
 
+// Charlie's Breadth Iterative
+
+const treeSumBreadth = (root) => {
+    if (root === null) return 0;
+
+    const queue = [ root ];
+    let result = 0;
+
+    while (queue.length > 0) {
+        const current = queue.shift();
+        result += current.val;
+
+        if (current.right) queue.push(current.right);
+        if (current.left) queue.push(current.left);
+    }
+    return result;
+}
+
+
+
+
 
 const a = new Node(3);
 const b = new Node(11);
@@ -50,4 +71,5 @@ c.right = f;
 //  / \      \
 // 4   -2     1
 
-console.log(treeSum(a)) // -> 21
+// console.log(treeSum(a)) // -> 21
+console.log(treeSumBreadth(a))
