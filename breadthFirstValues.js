@@ -28,7 +28,9 @@ const breadthFirstValues = (root) => {
     return result;
 }
 
-
+// There is no real way to implement a recursive solution to a breadth-first traversal
+// To do breadth-first, you need to use a queue of some sort, which does not work with recursion
+// Recursion relies on the call stack, which is not something that gels with a queue data structure
 
 
 
