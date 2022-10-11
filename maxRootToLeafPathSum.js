@@ -11,10 +11,30 @@ class Node {
   }
 }
 
+// Not a functioning solution, unsure how to solve iteratively
 
 
+// const maxPathSum = (root) => {
+//     const stack = [ root ];
+//     let maxSum = 0;
+
+//     while (stack.length > 0) {
+//         const current = stack.pop();
+//         let pathSum = 0;
+    
+    
+//         if (pathSum > maxSum) maxSum = pathSum;
+//     }
+
+//     return sum;
+// };
 
 
+const maxPathSumRecursive = (root) => {
+    if (root === null) return -Infinity;
+
+    const leftValues = maxPathSumRecursive
+}
 
 
 
