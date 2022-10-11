@@ -11,7 +11,20 @@ class Node {
 }
 
 const treeValueCount = (root, target) => {
-    
+    if (root === null) return 0;
+
+    const queue = [ root ];
+    let count = 0;
+
+    while (queue.length > 0) {
+        const current = queue.shift();
+        if (current.val === target) count++;
+
+        if (current.left) queue.push(current.left);
+        if (current.right) queue.push(current.right);
+    }
+
+    return count;
 }
 
 
@@ -38,4 +51,4 @@ c.right = f;
 //  / \     \
 // 4   6     12
 
-treeValueCount(a,  6); // -> 3
+console.log(treeValueCount(a,  6)) // -> 3
