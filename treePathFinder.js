@@ -38,6 +38,34 @@ const pathFinderRecursive = (root, target) => {
 }
 
 
+// Optimized recursive
+
+const pathFinderRecursiveOpt = (root, target) => {
+    const result = pathFinderRecursiveOptHelper(root, target);
+    if (result === null) {
+        return null
+    } else return result.reverse();
+}
+
+const pathFinderRecursiveOptHelper = (root, target) => {
+    if (root === null) return null;
+    if (root.val === target) return [root.val];
+
+    const leftValues = pathFinderRecursiveOptHelper(root.left, target);
+    const rightValues = pathFinderRecursiveOptHelper(root.right, target);
+
+    if (leftValues !== null) {
+        leftValues.push(root.val);
+        return leftValues;
+    }
+    if (rightValues !== null) {
+        rightValues.push(root.val);
+        return rightValues;
+    }
+
+    return null;
+}
+
 
 
 const a = new Node("a");
@@ -59,4 +87,4 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-console.log(pathFinderRecursive(a, 'e')) // -> [ 'a', 'b', 'e' ]
+console.log(pathFinderRecursiveOpt(a, 'e')) // -> [ 'a', 'b', 'e' ]
