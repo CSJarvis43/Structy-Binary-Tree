@@ -10,6 +10,8 @@ class Node {
   }
 }
 
+// Charlie's iterative
+
 const treeValueCount = (root, target) => {
     if (root === null) return 0;
 
@@ -27,7 +29,15 @@ const treeValueCount = (root, target) => {
     return count;
 }
 
+// Charlie's recursive
 
+const treeValueCountRecursive = (root, target) => {
+    if (root === null) return 0;
+
+    const hit = root.val === target ? 1 : 0;
+
+    return hit + treeValueCountRecursive(root.left, target) + treeValueCountRecursive(root.right, target);
+}
 
 
 
