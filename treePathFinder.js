@@ -13,7 +13,29 @@ class Node {
 }
 
 
+// const pathFinder = (root, target) => {
+//     if (root === null) return null;
 
+//     const stack = [ root ];
+
+// }
+
+
+
+// Recursive 
+
+const pathFinderRecursive = (root, target) => {
+    if (root === null) return null;
+    if (root.val === target) return [root.val];
+
+    const leftValues = pathFinderRecursive(root.left, target);
+    const rightValues = pathFinderRecursive(root.right, target);
+
+    if (leftValues !== null) return [root.val, ...leftValues];
+    if (rightValues !== null) return [root.val, ...rightValues];
+
+    return null;
+}
 
 
 
@@ -37,4 +59,4 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-console.log(pathFinder(a, 'e')) // -> [ 'a', 'b', 'e' ]
+console.log(pathFinderRecursive(a, 'e')) // -> [ 'a', 'b', 'e' ]
