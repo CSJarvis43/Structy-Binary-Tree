@@ -32,8 +32,12 @@ class Node {
 
 const maxPathSumRecursive = (root) => {
     if (root === null) return -Infinity;
+    if (root.left === null && root.right === null) return root.val;
 
-    const leftValues = maxPathSumRecursive
+    const leftValues = maxPathSumRecursive(root.left);
+    const rightValues = maxPathSumRecursive(root.right);
+
+    return leftValues > rightValues ? root.val + leftValues : root.val + rightValues;
 }
 
 
@@ -59,4 +63,4 @@ c.right = f;
 //  / \      \
 // 4   -2     1
 
-maxPathSum(a); // -> 18
+console.log(maxPathSumRecursive(a)) // -> 18
