@@ -25,7 +25,10 @@ class Node {
   // Recursive 
   
   const pathFinderRecursive = (root, target) => {
-      
+    if (root === null) return null;
+    if (root.val === target) return [ root.val ];
+
+    
   }
   
 
