@@ -28,7 +28,13 @@ class Node {
     if (root === null) return null;
     if (root.val === target) return [ root.val ];
 
-    
+    const leftValues = pathFinderRecursive(root.left, target);
+    const rightValues = pathFinderRecursive(root.right, target);
+
+    if (leftValues !== null) return [root.val, ...leftValues];
+    if (rightValues !== null) return [root.val, ...rightValues];
+
+    return null;
   }
   
 
@@ -53,4 +59,4 @@ class Node {
   //  / \     \
   // d   e     f
   
-  console.log(pathFinderRecursiveOpt(a, 'e')) // -> [ 'a', 'b', 'e' ]
+  console.log(pathFinderRecursive(a, 'e')) // -> [ 'a', 'b', 'e' ]
