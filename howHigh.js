@@ -44,6 +44,32 @@ const howHighStructy = (node) => {
 }
 
 
+// Iterative Attempt
+
+const howHighIterative = (root) => {
+    if (root === null) return -1;
+
+    const stack = [ root ];
+    let count = 0;
+    let runningCount = 0;
+
+    while (stack.length > 0) {
+        const current = stack.pop();
+        if (current.right) {
+            runningCount++;
+            stack.push(current.right);
+        } else if (current.left) {
+            runningCount++;
+            stack.push(current.left);
+        } else runningCount = 0;
+
+        if (runningCount > count) count = runningCount;
+    }
+
+    return count;
+}
+
+
 
 const a = new Node('a');
 const b = new Node('b');
@@ -66,3 +92,4 @@ c.right = f;
 
 console.log(howHigh(a)) // -> 2
 console.log(howHighStructy(a))
+console.log(howHighIterative(a))
