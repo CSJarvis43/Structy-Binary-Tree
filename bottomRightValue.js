@@ -31,6 +31,20 @@ const bottomRightValue = (root) => {
 }
 
 
+const bottomRightValueStructy = (root) => {
+    const queue = [ root ];
+    let current = null;
+
+    while (queue.length > 0) {
+        current = queue.shift();
+        if (current.left) queue.push(current.left);
+        if (current.right) queue.push(current.right);
+    }
+
+    return current.val;
+
+}
+
 
 const a = new Node(3);
 const b = new Node(11);
