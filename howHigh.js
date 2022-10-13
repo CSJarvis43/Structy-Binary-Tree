@@ -32,6 +32,17 @@ const howHigh = (root) => {
 
 }
 
+// Structy Recursive 
+
+const howHighStructy = (node) => {
+    if (node === null) return -1;
+
+    const leftTreeHeight = howHighStructy(node.left);
+    const rightTreeHeight = howHighStructy(node.right);
+
+    return Math.max(leftTreeHeight, rightTreeHeight) + 1;
+}
+
 
 
 const a = new Node('a');
@@ -54,3 +65,4 @@ c.right = f;
 // d   e     f
 
 console.log(howHigh(a)) // -> 2
+console.log(howHighStructy(a))
