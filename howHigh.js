@@ -14,8 +14,22 @@ class Node {
   }
 }
 
+// Charlie's Recursive
+
 const howHigh = (root) => {
-    
+
+    if (root === null) return -1;
+
+    const leftPath = howHigh(root.left);
+    const rightPath = howHigh(root.right);
+
+    if (leftPath >= rightPath) {
+        return 1 + leftPath;
+    } else if (rightPath > leftPath) {
+        return 1 + rightPath;
+    }
+
+
 }
 
 
@@ -39,4 +53,4 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-howHigh(a); // -> 2
+console.log(howHigh(a)) // -> 2
