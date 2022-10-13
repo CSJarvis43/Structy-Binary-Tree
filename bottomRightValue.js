@@ -4,19 +4,30 @@
 //You may assume that the input tree is non-empty.
 
 
-// class Node {
-//   constructor(val) {
-//     this.val = val;
-//     this.left = null;
-//     this.right = null;
-//   }
-// }
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
 
 
 
 
 const bottomRightValue = (root) => {
+    const queue = [ root ];
+    const results = [];
 
+    while (queue.length > 0) {
+        const current = queue.shift();
+        results.push(current.val);
+
+        if (current.left) queue.push(current.left);
+        if (current.right) queue.push(current.right);
+    }
+
+    return results.slice(-1)[0];
 }
 
 
