@@ -71,3 +71,4 @@ c.right = f;
 // 4   -2     1
 
 console.log(maxPathSumRecursive(a)) // -> 18
+console.log(maxPathSumStructy(a))
