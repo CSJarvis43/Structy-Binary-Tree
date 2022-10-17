@@ -31,6 +31,28 @@ const treeLevels = (root) => {
 }
 
 
+const treeLevelsBreadth = (root) => {
+    if (root === null) return [];
+
+    let result = [];
+    let queue = [ {node: root, level: 0} ]
+
+    while (queue.length > 0) {
+        const { node, level } = queue.shift();
+
+        if (result.length === level) {
+            result.push([ node.val ]);
+        } else {
+            result[level].push(node.val);
+        }
+
+        if (node.left) queue.push({ node: node.left, level: level + 1});
+        if (node.right) queue.push({ node: node.right, level: level + 1});
+    }
+    return result;
+}
+
+
 const a = new Node("a");
 const b = new Node("b");
 const c = new Node("c");
@@ -56,3 +78,5 @@ console.log(treeLevels(a)) // ->
 //   ['b', 'c'],
 //   ['d', 'e', 'f']
 // ]
+
+console.log(treeLevelsBreadth(a))
