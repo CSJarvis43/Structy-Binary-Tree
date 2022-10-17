@@ -52,6 +52,26 @@ const treeLevelsBreadth = (root) => {
     return result;
 }
 
+const treeLevelsRecursive = (root) => {
+    const result = [];
+    treeLevelsHelper(root, result, 0);
+
+    return result;
+}
+
+const treeLevelsHelper = (root, result, level) => {
+    if (root === null) return;
+
+    if (result.length === level) {
+        result.push([ root.val ]);
+    } else {
+        result[level].push(root.val);
+    }
+
+    treeLevelsHelper(root.left, result, level + 1);
+    treeLevelsHelper(root.right, result, level + 1);
+}
+
 
 const a = new Node("a");
 const b = new Node("b");
@@ -80,3 +100,4 @@ console.log(treeLevels(a)) // ->
 // ]
 
 console.log(treeLevelsBreadth(a))
+console.log(treeLevelsRecursive(a))
