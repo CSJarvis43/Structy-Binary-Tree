@@ -10,7 +10,24 @@ class Node {
 }
 
 const treeLevels = (root) => {
-    
+    if (root === null) return [];
+
+    let result = [];
+    const stack = [ {node: root, level: 0} ];
+
+    while (stack.length > 0) {
+        const { node, level } = stack.pop();
+
+        if (result.length === level) {
+            result.push([ node.val ]);
+        } else {
+            result[level].push(node.val);
+        }
+        if (node.left) stack.push({ node: node.left, level: level + 1});
+        if (node.right) stack.push({ node: node.right, level: level + 1});
+    }
+
+    return result;
 }
 
 
@@ -33,7 +50,7 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-treeLevels(a); // ->
+console.log(treeLevels(a)) // ->
 // [
 //   ['a'],
 //   ['b', 'c'],
