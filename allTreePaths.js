@@ -17,7 +17,22 @@ class Node {
 
 
 const allTreePaths = (root) => {
-    
+  if (root === null) return [];
+  if (root.left === null && root.right === null) return [ [root.val] ];
+
+  const leftPath = allTreePaths(root.left);
+  const rightPath = allTreePaths(root.right);
+  const result = [];
+
+  for (path of leftPath) {
+    result.push([root.val, ...path]);
+  }
+
+  for (path of rightPath) {
+    result.push([root.val, ...path])
+  }
+
+  return result;
 }
 
 
