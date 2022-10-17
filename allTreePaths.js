@@ -24,11 +24,11 @@ const allTreePaths = (root) => {
   const rightPath = allTreePaths(root.right);
   const result = [];
 
-  for (path of leftPath) {
+  for (let path of leftPath) {
     result.push([root.val, ...path]);
   }
 
-  for (path of rightPath) {
+  for (let path of rightPath) {
     result.push([root.val, ...path])
   }
 
@@ -36,7 +36,27 @@ const allTreePaths = (root) => {
 }
 
 
+// Structy
 
+const allTreePathsStructy = (root) => {
+  if (root === null) return [];
+  if (root.left === null && root.right === null) return [ [root.val] ];
+
+  const paths = [];
+  const leftSubPaths = allTreePathsStructy(root.left);
+
+  for (let subPath of leftSubPaths) {
+    paths.push([ root.val, ...subPath ]);
+  }
+
+  const rightSubPaths = allTreePathsStructy(root.right);
+
+  for (let subPath of rightSubPaths) {
+    paths.push([ root.val, ...subPath ]);
+  }
+
+  return paths;
+}
 
 
 
@@ -66,3 +86,5 @@ console.log(allTreePaths(a)) // ->
 //   [ 'a', 'b', 'e' ], 
 //   [ 'a', 'c', 'f' ] 
 // ] 
+
+console.log(allTreePathsStructy(a));
