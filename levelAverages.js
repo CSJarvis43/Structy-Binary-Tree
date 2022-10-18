@@ -35,7 +35,34 @@ const levelAveragesHelper = (root, result, level) => {
 }
 
 
+// Charlie's Iterative Depth solution
 
+const levelAveragesDepth = (root) => {
+    if (root === null) return [];
+
+    let result = [];
+    const stack = [ {node: root, level: 0} ];
+
+    while (stack.length > 0) {
+        const { node, level } = stack.pop();
+
+        if (result.length === level) {
+            result.push([ node.val ]);
+        } else {
+            result[level].push(node.val);
+        }
+
+        if (node.left) stack.push({ node: node.left, level: level + 1 });
+        if (node.right) stack.push({ node: node.right, level: level + 1 });
+    }
+
+    for (let i = 0; i < result.length; i++) {
+        const sum = result[i].reduce((a, b) => a + b, 0);
+        result[i] = sum / result[i].length;
+    }
+
+    return result;
+}
 
 
 
@@ -59,3 +86,4 @@ c.right = f;
 // 4   -2     1
 
 console.log(levelAverages(a)) // -> [ 3, 7.5, 1 ] 
+console.log(levelAveragesDepth(a))
