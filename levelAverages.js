@@ -9,7 +9,30 @@ class Node {
   }
 }
 
+// Charlie's Solution
 
+const levelAverages = (root) => {
+    const result = [];
+    levelAveragesHelper(root, result, 0);
+
+    for (let i = 0; i < result.length; i++) {
+        let sum = result[i].reduce((a, b) => a + b, 0);
+        result[i] = sum / result[i].length;
+    }
+
+    return result;
+}
+
+const levelAveragesHelper = (root, result, level) => {
+    if (root === null) return;
+
+    if (result.length === level) {
+        result.push([root.val]);
+    } else result[level].push(root.val);
+
+    levelAveragesHelper(root.left, result, level + 1);
+    levelAveragesHelper(root.right, result, level + 1);
+}
 
 
 
@@ -35,4 +58,4 @@ c.right = f;
 //  / \      \
 // 4   -2     1
 
-levelAverages(a); // -> [ 3, 7.5, 1 ] 
+console.log(levelAverages(a)) // -> [ 3, 7.5, 1 ] 
