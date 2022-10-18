@@ -31,6 +31,24 @@ const leafList = (root) => {
 }
 
 
+// Charlie's recursive solution
+
+const leafListRecursive = (root) => {
+    let result = [];
+    leafListHelper(root, result);
+    return result;
+}
+
+const leafListHelper = (root, result) => {
+    if (root === null) return;
+
+    if (root.left === null && root.right === null) {
+        result.push(root.val);
+    }
+
+    leafListHelper(root.left, result);
+    leafListHelper(root.right, result);
+}
 
 
 const a = new Node("a");
@@ -53,3 +71,4 @@ c.right = f;
 // d   e     f
 
 console.log(leafList(a)) // -> [ 'd', 'e', 'f' ] 
+console.log(leafListRecursive(a));
