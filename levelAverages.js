@@ -65,6 +65,37 @@ const levelAveragesDepth = (root) => {
 }
 
 
+// Structy Recursive solution
+
+const levelAveragesStructy = (root) => {
+    const levels = [];
+    fillLevels(root, levels, 0);
+
+    return levels.map(arr => getAvg(arr));
+}
+
+const getAvg = (arr) => {
+    let sum = 0;
+    for (let num of arr) {
+        sum += num;
+    }
+    return sum / arr.length;
+}
+
+const fillLevels = (root, levels, levelNum) => {
+    if (root === null) return;
+
+    if (levels.length === levelNum) {
+        levels.push([ root.val ]);
+    } else {
+        levels[levelNum].push(root.val);
+    }
+
+    fillLevels(root.left, levels, levelNum + 1);
+    fillLevels(root.right, levels, levelNum + 1);
+}
+
+
 
 const a = new Node(3);
 const b = new Node(11);
@@ -87,3 +118,4 @@ c.right = f;
 
 console.log(levelAverages(a)) // -> [ 3, 7.5, 1 ] 
 console.log(levelAveragesDepth(a))
+console.log(levelAveragesStructy(a))
